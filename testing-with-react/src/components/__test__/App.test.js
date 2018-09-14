@@ -10,24 +10,16 @@ let wrapped;
 
 // Executed before each test. Only applied on tests in this file.
 beforeEach(() => {
-    console.log('beforeEach');
-
     // Enzymes shallow renders *just* the given component and none of its React children.
     // Wrapped version of our app component. Has additional Enzyme functionality on top!
     wrapped = shallow(<App/>);
 });
 
-afterEach(() => {
-    console.log('afterEach');
-});
-
 it('shows a comment box', () => {
-    console.log('shows a comment box');
     expect(wrapped.find(CommentBox).length).toEqual(1);
 });
 
 it('shows a comment list', () => {
-    console.log('shows a comment list');
     expect(wrapped.find(CommentList).length).toEqual(1);
 });
 
