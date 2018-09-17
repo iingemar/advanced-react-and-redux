@@ -37,3 +37,19 @@ it('has a textarea that users can type in', () => {
     expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
 });
 
+it('empties textarea on submit form', () => {
+    // Simulate user writing something in the textarea
+    wrapped.find('textarea').simulate('change', {
+        // Return fake event object
+        target: { value: 'new comment' }
+    });
+    wrapped.update();
+    // Good to check that we actually changed the textarea, so we don't get a false positive on next expect.
+    expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
+
+    // Simulate user submitting the form
+    wrapped.find('form').simulate('submit');
+    wrapped.update();
+
+    expect(wrapped.find('textarea').prop('value')).toEqual('');
+});

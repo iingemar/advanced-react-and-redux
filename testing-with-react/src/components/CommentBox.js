@@ -25,7 +25,6 @@ export default class CommentBox extends Component {
     };
 
     render() {
-        console.log('render: CommentBox');
         return (
             <form onSubmit={this.handleSubmit}>
                 <h4>Add a comment</h4>
