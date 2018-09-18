@@ -1,12 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import Root from 'Root';
 import CommentBox from 'components/CommentBox';
 
 let wrapped;
 
 beforeEach(() => {
     // full rendering actually mounts the component in the DOM. (our fake DOM from jsdom)
-    wrapped = mount(<CommentBox/>);
+    wrapped = mount(<Root><CommentBox/></Root>);
 });
 
 afterEach(() => {
