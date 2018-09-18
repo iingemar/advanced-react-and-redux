@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { saveComment } from 'actions';
 
-export default class CommentBox extends Component {
+
+class CommentBox extends Component {
     state = {
         comment: ''
     };
@@ -15,8 +18,9 @@ export default class CommentBox extends Component {
         // Keep page from reloading
         event.preventDefault();
 
-        // TODO Call action creator to save the comment
+        // Use the connected saveComment action from mapDispatchToProps below
         console.log('handleSubmit:', this.state.comment);
+        this.props.saveComment(this.state.comment);
 
         // Empty text area
         this.setState({
@@ -39,3 +43,5 @@ export default class CommentBox extends Component {
         );
     }
 }
+
+export default connect(null, { saveComment })(CommentBox);
