@@ -15,7 +15,7 @@ afterEach(() => {
     wrapped.unmount();
 });
 
-it('has a textarea and a button', () => {
+it('has a textarea and a two buttons', () => {
     // Find every node in the render tree that matches the provided selector.
     // 1. A Valid CSS Selector
     // class syntax (.foo, .foo-bar, etc.)
@@ -23,7 +23,7 @@ it('has a textarea and a button', () => {
     // id syntax (#foo, #foo-bar, etc.)
     // attribute syntax ([href="foo"], [type="text"], etc.)
     expect(wrapped.find('textarea').length).toEqual(1);
-    expect(wrapped.find('button').length).toEqual(1);
+    expect(wrapped.find('button').length).toEqual(2);
 });
 
 // creates a block that groups together several related tests in one "test suite".
