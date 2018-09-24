@@ -43,5 +43,8 @@ it('can fetch a list of comments and display them', (done) => {
 
         // Tell jest to hold on until the setTimeout is finished.
         done();
+
+        // Cleanup the DOM
+        wrapped.unmount();
     }, 100);
 });
