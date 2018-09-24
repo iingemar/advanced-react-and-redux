@@ -9,7 +9,6 @@ export default function(state = [], action) {
 
         case FETCH_COMMENTS:
             console.log('commentsReducer');
-            console.log('action.payload:', action.payload);
             const comments = action.payload.data.map((comment) => {
                 return comment.name;
             });
