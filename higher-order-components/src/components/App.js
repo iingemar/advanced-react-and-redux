@@ -32,6 +32,8 @@ class App extends Component {
     }
 
     render() {
+        // Route sends some props to CommentBox. this.props.history
+        // The CommentBox is a connected CommentBox, that add some properties also.
         return (
             <div>
                 { this.renderHeader() }
