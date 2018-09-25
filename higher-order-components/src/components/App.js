@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import CommentBox from 'components/CommentBox';
 import CommentList from 'components/CommentList';
+import * as actions from 'actions';
+
 
 // exact makes router only accept slash by itself.
 class App extends Component {
@@ -20,11 +22,11 @@ class App extends Component {
     renderButton() {
         if (this.props.auth) {
             return (
-                <button>Sign out</button>
+                <button onClick={() => { this.props.changeAuth(false) }}>Sign out</button>
             );
         } else {
             return (
-                <button>Sign in</button>
+                <button onClick={() => { this.props.changeAuth(true) }}>Sign in</button>
             );
         }
     }
@@ -46,4 +48,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, actions)(App);

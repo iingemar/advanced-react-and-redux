@@ -8,6 +8,27 @@ class CommentBox extends Component {
         comment: ''
     };
 
+    // When rendered first time
+    componentDidMount() {
+        console.log('CommentBox: componentDidMount');
+        this.shouldNavigateAway();
+    }
+
+    // Called when component gets new props
+    componentDidUpdate() {
+        console.log('CommentBox: componentDidUpdate');
+        this.shouldNavigateAway();
+    }
+
+    shouldNavigateAway() {
+        if (!this.props.auth) {
+            console.log('Not logged in! Redirecting to index.');
+            this.props.history.push('/')
+        } else {
+            console.log('Welcome!');
+        }
+    }
+
     handleChange = (event) => {
         this.setState({
             comment: event.target.value
@@ -42,10 +63,18 @@ class CommentBox extends Component {
                         <button>Submit</button>
                     </div>
                 </form>
+                <p>auth: {this.props.auth ? 'logged in' : 'not logged in'}</p>
                 <button className="fetch-comments" onClick={this.props.fetchComments}>Fetch comments</button>
             </div>
         );
     }
 }
 
-export default connect(null, actions)(CommentBox);
+function mapStateToProps(state) {
+    console.log('mapStateToProps', state);
+    return {
+        auth: state.auth
+    };
+}
+
+export default connect(mapStateToProps, actions)(CommentBox);
