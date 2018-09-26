@@ -3,7 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 // Creates a Redux store that holds the complete state tree of your app.
 import { createStore, applyMiddleware } from 'redux';
-import reduxPromise from 'redux-promise';
+import async from 'middlewares/async';
 import reducers from 'reducers/index'
 
 
@@ -11,7 +11,7 @@ export default ({ children, initialState = {} }) => {
     const store = createStore(
         reducers,
         initialState,
-        applyMiddleware(reduxPromise)
+        applyMiddleware(async)
     );
 
     return (
