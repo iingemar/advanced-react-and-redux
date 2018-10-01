@@ -16,8 +16,6 @@ export default ({ dispatch }) => next => action => {
         return next(action);
     }
 
-    debugger;
-
     // If it does, wait for it to finish
     // ...action. Take all properties in action and add them
     action.payload.then(function(response) {
