@@ -10,6 +10,9 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const router = require('./router');
 
+// DB setup. auth_db is the database name
+mongoose.connect('mongodb://localhost:27017/auth_db', { useNewUrlParser: true });
+
 // App setup
 const app = express();
 // Register morgan as middleware. Morgan is a logging framework that logs all incoming requests.
