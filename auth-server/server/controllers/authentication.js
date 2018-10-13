@@ -4,7 +4,9 @@ exports.signup = function(req, res, next) {
     const email = req.body.email;
     const password = req.body.password;
 
-    // res.send({ success: true });
+    if (!email || !password) {
+        return res.status(422).send({ error: 'You must provide email/password'});
+    }
 
     // See if user with given email exists
     User.findOne({ email: email }, function(err, existing_user) {
@@ -15,7 +17,7 @@ exports.signup = function(req, res, next) {
         // If exists, return error.
         if (existing_user) {
             // Unprocessable entity
-            return res.status(422).send({ error: 'Email exists.'});
+            return res.status(422).send({ error: 'Email exists'});
         }
 
         // If not, create and save user data
@@ -31,7 +33,7 @@ exports.signup = function(req, res, next) {
             }
 
             // Respond to request
-            res.json(user);
+            res.json({ succuess:true });
         });
     });
 };
