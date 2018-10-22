@@ -13,6 +13,13 @@ function tokenForUser(user) {
     }, config.secret);
 }
 
+exports.signin = function(req, res, next) {
+    // User has already had their email and psw authd
+    // We just need to give them a token.
+    const token = tokenForUser(req.user);
+    res.send({ token: token });
+};
+
 exports.signup = function(req, res, next) {
     const email = req.body.email;
     const password = req.body.password;
